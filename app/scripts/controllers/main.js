@@ -9,7 +9,7 @@ angular.module('VisualPHPUnit').controller('MainCtrl', function($scope, $http) {
 
     var config = {
         method : 'GET',
-        url : 'http://localhost:8001/tests'
+        url : 'http://vpu.learnbeat.dev/backend/tests'
     };
     var responsePromise = $http(config);
     responsePromise.success(function(data) {
@@ -38,7 +38,7 @@ angular.module('VisualPHPUnit').controller('MainCtrl', function($scope, $http) {
 
             var config = {
                 method : 'POST',
-                url : 'http://localhost:8001/run',
+                url : 'http://vpu.learnbeat.dev/backend/run',
                 data : request
             };
             var responsePromise = $http(config);

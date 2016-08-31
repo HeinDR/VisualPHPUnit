@@ -71,9 +71,9 @@ class Test extends Action
             ->directories()
             ->append($files)
             ->in($dir);
-        
+
         $list = array();
-        
+
         foreach ($directories as $file) {
             if ($file->getType() == 'dir') {
                 $list[] = array(
@@ -95,7 +95,7 @@ class Test extends Action
                 }
             }
         }
-        
+
         return $this->excludeEmptyDirectories($list);
     }
 
@@ -116,7 +116,7 @@ class Test extends Action
                 }
             }
         }
-        
+
         return $list;
     }
 
@@ -129,7 +129,7 @@ class Test extends Action
      */
     private function isPhpUnitTestCase($path)
     {
-        $result1 = preg_grep('/PHPUnit_Framework_TestCase$/', file($path));
+        $result1 = preg_grep('/TestCase$/', file($path));
         return !empty($result1);
     }
 
@@ -147,7 +147,7 @@ class Test extends Action
         $result2 = preg_grep('/^class/', file($path));
         $matches1 = [];
         $matches2 = [];
-        
+
         preg_match('/^class\s([A-Za-z0-9]+).+$/', array_pop($result2), $matches2);
         if (count($result1) > 0) {
             preg_match('/^namespace\s(.+);$/', array_pop($result1), $matches1);
@@ -172,7 +172,7 @@ class Test extends Action
         $result2 = preg_grep('/^class/', file($path));
         if (count($result2) > 0) {
             $class = $matches2[1];
-            
+
             require_once $path;
             $obj = new ReflectionClass($class);
             $methods = [];

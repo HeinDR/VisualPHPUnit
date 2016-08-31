@@ -54,7 +54,7 @@ class Parser
             if (file_exists($filename)) {
                 $case1 = strpos($filename, 'tests');
                 $case2 = strpos($filename, 'Tests');
-                
+
                 if (is_numeric($case1)) {
                     $path = substr($filename, 0, $case1 + 6) . 'bootstrap.php';
                     if (file_exists($path)) {
@@ -84,7 +84,7 @@ class Parser
         $failed = 0;
         $notImplemented = 0;
         $skipped = 0;
-        
+
         $tests = [];
         foreach ($result->passed() as $key => $value) {
             $tests[] = $this->parseTest('passed', $key);
@@ -106,11 +106,11 @@ class Parser
             $tests[] = $this->parseTest('error', $obj);
             $error ++;
         }
-        
+
         usort($tests, function ($a, $b) {
             return strnatcmp($a['class'], $b['class']);
         });
-        
+
         $data = [
             'time' => $result->time(),
             'total' => count($tests),
@@ -135,7 +135,7 @@ class Parser
         $vpuPath = realpath(__DIR__ . '/../');
         $vendorPath = realpath(__DIR__ . '/../../vendor');
         $backendPath = realpath(__DIR__ . '/../../backend');
-        
+
         $newTrace = [];
         if (! empty($trace)) {
             foreach ($trace as $entity) {
@@ -210,7 +210,7 @@ class Parser
     private function explodeTestName($testName)
     {
         $matches = [];
-        preg_match('/([a-zA-Z0-9]+)::([a-zA-Z0-9_]+)$/', $testName, $matches);
+        preg_match('/([a-zA-Z0-9]+)::([a-zA-Z0-9_]+)/', $testName, $matches);
         return [
             'class' => $matches[1],
             'method' => $matches[2]

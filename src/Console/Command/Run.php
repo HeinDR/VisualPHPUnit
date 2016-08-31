@@ -46,7 +46,7 @@ class Run extends Command
      * @var string
      */
     private $appRoot;
-    
+
     /**
      * Application config
      *
@@ -72,7 +72,7 @@ class Run extends Command
             'frontend' => [
                 'host' => 'localhost',
                 'port' => 8000,
-                'docroot' => 'dist'
+                'docroot' => 'app'
             ],
             'backend' => [
                 'host' => 'localhost',
@@ -92,7 +92,7 @@ class Run extends Command
     {
         $this->config = json_decode(file_get_contents($input->getOption('config')), true);
         $this->appRoot = dirname(realpath($input->getOption('config')));
-        
+
         $output->setFormatter(new OutputFormatter(true));
         if ($input->getOption('start')) {
             $this->start();

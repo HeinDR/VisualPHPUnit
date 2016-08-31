@@ -14,5 +14,10 @@
 require __DIR__ . '/../vendor/autoload.php';
 use Visualphpunit\Api\Application\Vpu;
 
-$app = new Vpu();
-$app->run();
+function run()
+{
+    $app = new Vpu();
+    $app->run();
+}
+
+run();

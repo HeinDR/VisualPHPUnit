@@ -5,6 +5,11 @@
                 "name":"VisualPHPUnit tests",
                 "path":"../tests",
                 "ignoreHidden":true
+            },
+            {
+                "name":"BaseLearnbeat tests",
+                "path":"../../base-learnbeat/test",
+                "ignoreHidden":false
             }
         ],
         "database":{

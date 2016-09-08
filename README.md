@@ -22,10 +22,22 @@ Version [3.0.0](https://github.com/VisualPHPUnit/VisualPHPUnit/releases/tag/v3.0
 
 ##Setup
 
+On *nix
+
  * Checkout or download VisualPHPUnit
- * Run composer.php to install php dependecies.
- * Run npm install
- * Run bower install
+ * Run `make tools setup build`
+ 
+On Windows
+
+ * Checkout or download VisualPHPUnit
+ * Run `php -r "readfile('https://getcomposer.org/installer');" | php`.
+ * Run `./composer.phar install` to install php dependencies
+ * Run `npm install` to install node tools
+ * Run `bower install` to install javascript dependencies
+ * Run `grunt build` to build frontend
+ 
+To run
+
  * Run `./bin/vpu -c vpu.json -s` to start VisualPHPUnit with the build-in php server.
  * Run `./bin/vpu -c vpu.json -t` to stop VisualPHPUnit with the build-in php server.
 
@@ -33,7 +45,7 @@ You may browse localhost:8000 to access the test suites.
 
 You can update `./vpu.json` to add additional test suites.
 
-You may run tests from the console like this `./bin/vpu -c vpu.json testfile.php`. You may append `-a` to archive your test results. 
+You may run tests from the console like this `./bin/vpu -c vpu.json testfile.php`. You may append `-a` to archive your test results. You may append --help for options
 
 ## Development
 
@@ -47,14 +59,20 @@ The backend is a REST application based on [Silex](http://silex.sensiolabs.org/)
 ## Running VPU in dev mode
 
 ### Setup dependencies
-```bash	
-git clone git@github.com:VisualPHPUnit/VisualPHPUnit.git
-git checkout 3.x
-php -r "readfile('https://getcomposer.org/installer');" | php
-php composer.phar install
-npm install
-bower install
-```
+
+On *nix
+
+ * Checkout or download VisualPHPUnit
+ * Run `make tools setup`
+ 
+On Windows
+
+ * Checkout or download VisualPHPUnit
+ * Run `php -r "readfile('https://getcomposer.org/installer');" | php`.
+ * Run `./composer.phar install` to install php dependencies
+ * Run `npm install` to install node tools
+ * Run `bower install` to install javascript dependencies
+
 
 ## Start VPU in dev mode
 You need two consoles for this setup, one for the frontend and one for the backend.
@@ -63,18 +81,6 @@ cd backend
 php -S localhost:8001
 cd ../app
 grunt serve
-```
-
-## Running VPU at the Command Line
-
-VPU can be run at the command line, making it possible to automate the generation of test results via cron.
-
-You may append --help for options
-
-### Usage
-
-```bash
-./bin/vpu
 ```
 
 You may read more about VisualPHPUnit [here](http://visualphpunit.github.io/VisualPHPUnit/) or in the [wiki](https://github.com/VisualPHPUnit/VisualPHPUnit/wiki).
